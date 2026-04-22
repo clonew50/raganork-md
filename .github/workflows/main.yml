@@ -1,0 +1,24 @@
+name: Run Bot
+
+on:
+  workflow_dispatch:
+  schedule:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: تحميل الكود
+        uses: actions/checkout@v3
+
+      - name: تثبيت Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "22"
+
+      - name: تثبيت المكتبات
+        run: yarn install
+
+      - name: تشغيل البوت
+        run: node index.js
